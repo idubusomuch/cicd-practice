@@ -1,39 +1,14 @@
-# Workflow : 하나의 yml 파일을 하나의 Workflow라고 부름
-name: Github Actions 실행시키기
+name: Deploy To S3 and Invalidate CloudFront
 
-# Event : 실행되는 시점을 설정
-# main이라는 브랜치에 push 될 때 아래 Workflow를 실행
 on:
   push:
     branches:
-      # - 브랜치명 << 이런식으로 띄어쓰기 꼭 할것..
       - main
 
-# Workflow는 여러 개의 Job으로 이루어질 수 있고 병렬적으로 수행됨
 jobs:
-  # Job을 식별하는 id
-  My-Develop-Job:
+  deploy:
     runs-on: ubuntu-latest
-    # 하나의 Job은 여러 개의 step으로 이루어짐
     steps:
-      - name: Hello World 출력하기 # Step의 이름
-        run: echo "Hello World" # 실행시킬 명령어
-
-      - name: 여러 명령어 문장 작성하기
-        # 여러 명령어 작성할 때는 | 사용하기
-        run: |
-          echo "Good"
-          echo "Morning"
-          pwd
-
-      # 참고: https://docs.github.com/en/actions/learn-github-actions/variables
-      - name: Github Actions 자체에 저장된 변수 사용
-        run: |
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_SHA
-
-      # github setting - Secrets and variables - actions 탭 가서 비밀 변수 생성
-      - name: Github Actions Secret 변수 사용
-        run: |
-          echo ${{ secrets.MY_NAME }}
-          echo ${{ secrets.MY_HOBBY }}
+      - name: Github Repository 파일 불러오기
+        # github 라이브러리 checkout 사용
+        uses: actions/checkout@v4
