@@ -14,7 +14,7 @@ jobs:
   # Job을 식별하는 id
   My-Develop-Job:
     runs-on: ubuntu-latest
-    # 하나의 Job은 여러 개의 step으로 이루어져 있음
+    # 하나의 Job은 여러 개의 step으로 이루어짐
     steps:
       - name: Hello World 출력하기 # Step의 이름
         run: echo "Hello World" # 실행시킬 명령어
@@ -31,6 +31,8 @@ jobs:
         run: |
           echo $GITHUB_REPOSITORY
           echo $GITHUB_SHA
+
+      # github setting - Secrets and variables - actions 탭 가서 비밀 변수 생성
       - name: Github Actions Secret 변수 사용
         run: |
           echo ${{ secrets.MY_NAME }}
