@@ -13,8 +13,8 @@ jobs:
         # github 라이브러리 checkout 사용
         uses: actions/checkout@v4
 
-      - name: Repository 파일 출력하기
-        run: ls
+      - name: 의존성 설치
+        run: npm i
 
       - name: 빌드하기
         run: npm run build
