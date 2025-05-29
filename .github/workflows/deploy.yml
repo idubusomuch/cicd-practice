@@ -1,5 +1,18 @@
+# Workflow : 하나의 yml 파일을 하나의 Workflow라고 부름
 name: Github Actions 실행시키기
 
+# Event : 실행되는 시점을 설정
+# main이라는 브랜치에 push 될 때 아래 Workflow를 실행
 on:
   push:
     branches: -main
+
+# Workflow는 여러 개의 Job으로 이루어질 수 있고 병렬적으로 수행됨
+jobs:
+  # Job을 식별하는 id
+  My-Develop-Job:
+    runs-on: ubuntu-latest
+    # 하나의 Job은 여러 개의 step으로 이루어져 있음
+    steps:
+      - name: Hello World 출력하기 # Step의 이름
+        run: echo "Hello World" # 실행시킬 명령어
