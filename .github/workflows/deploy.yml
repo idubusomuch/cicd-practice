@@ -12,3 +12,6 @@ jobs:
       - name: Github Repository 파일 불러오기
         # github 라이브러리 checkout 사용
         uses: actions/checkout@v4
+
+      - name: Repository 파일 출력하기
+        run: ls
