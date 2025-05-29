@@ -6,6 +6,7 @@ name: Github Actions 실행시키기
 on:
   push:
     branches:
+      # - 브랜치명 << 이런식으로 띄어쓰기 꼭 할것..
       - main
 
 # Workflow는 여러 개의 Job으로 이루어질 수 있고 병렬적으로 수행됨
@@ -19,6 +20,14 @@ jobs:
         run: echo "Hello World" # 실행시킬 명령어
 
       - name: 여러 명령어 문장 작성하기
+        # 여러 명령어 작성할 때는 | 사용하기
         run: |
           echo "Good"
           echo "Morning"
+          pwd
+
+      # 참고: https://docs.github.com/en/actions/learn-github-actions/variables
+      - name: Github Actions 자체에 저장된 변수 사용
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_SHA
