@@ -16,3 +16,8 @@ jobs:
     steps:
       - name: Hello World 출력하기 # Step의 이름
         run: echo "Hello World" # 실행시킬 명령어
+
+      - name: 여러 명령어 문장 작성하기
+        run: |
+          echo "Good"
+          echo "Morning"
