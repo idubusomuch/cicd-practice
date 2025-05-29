@@ -5,7 +5,8 @@ name: Github Actions 실행시키기
 # main이라는 브랜치에 push 될 때 아래 Workflow를 실행
 on:
   push:
-    branches: -main
+    branches:
+      - main
 
 # Workflow는 여러 개의 Job으로 이루어질 수 있고 병렬적으로 수행됨
 jobs:
